@@ -1,7 +1,7 @@
 public class Person {
     private String name;
     private int age;
-    private String gender;
+    private String gender;// 创建一个抽象类，不创建实例对象，提高代码的设计层次和可读性。
 
     // 默认构造函数
     public Person() {
