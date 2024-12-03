@@ -1,6 +1,5 @@
 import java.util.LinkedList;
 import java.util.Queue;//添加以便 Ride 可以存储等待乘坐 Ride 的 Visitors（即 Visitor）对象
-import java.util.List;
 
 public class Ride implements RideInterface {
     private String rideName;
