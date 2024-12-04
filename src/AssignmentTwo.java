@@ -93,9 +93,36 @@ public class AssignmentTwo {
     }
 
     public void partFourB() {
+        // 创建一个新的 Ride 对象
+        Employee operator3 = new Employee("Ella", 35, "ella@example.com", "Operator", "Morning");
+        Ride swingRide1 = new Ride("Swing Ride", "Batman", operator3);
+        // 创建 Visitor 对象
+        Visitor v1 = new Visitor("Alice", 30, "Female", "T101", 2);
+        Visitor v2 = new Visitor("Bob", 25, "Male", "T102", 1);
+        Visitor v3 = new Visitor("Charlie", 20, "Male", "T103", 3);
+        Visitor v4 = new Visitor("Diana", 28, "Female", "T104", 2);
+        Visitor v5 = new Visitor("Eve", 22, "Female", "T105", 1);
+        // 添加至少 5 名访客到 rideHistory
+        swingRide1.addVisitorToHistory(v5);
+        swingRide1.addVisitorToHistory(v4);
+        swingRide1.addVisitorToHistory(v3);
+        swingRide1.addVisitorToHistory(v2);
+        swingRide1.addVisitorToHistory(v1);
+
+        // 打印未排序的访客历史记录
+        System.out.println("Before sorting:");
+        swingRide1.printRideHistory();
+
+        // 对 rideHistory 进行排序
+        swingRide1.sortRideHistory();
+
+        // 打印排序后的访客历史记录
+        System.out.println("After sorting:");
+        swingRide1.printRideHistory();
     }
 
     public void partFive() {
+        System.err.println("NULL");
     }
 
     public void partSix() {

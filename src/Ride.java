@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;//添加以便 Ride 可以存储等待乘坐 Ride 的 Visitors（即 Visitor）对象
 import java.util.List;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class Ride implements RideInterface {
@@ -101,5 +102,16 @@ public class Ride implements RideInterface {
             Visitor visitor = iterator.next();
             System.out.println("- " + visitor.getName());
         }
+    }
+
+    public void sortRideHistory() {
+        if (rideHistory.isEmpty()) {
+            System.out.println("No visitors in the ride history to sort.");
+            return;
+        }
+
+        // 使用 VisitorComparator 对 rideHistory 进行排序
+        Collections.sort(rideHistory, new VisitorComparator());
+        System.out.println("Ride history has been sorted.");
     }
 }
