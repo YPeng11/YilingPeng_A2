@@ -1,11 +1,33 @@
 public class AssignmentTwo {
+    public static void main(String[] args) {
+        AssignmentTwo assignment = new AssignmentTwo();
+
+        // 调用各部分逻辑
+        System.out.println("---- Part Three ----");
+        assignment.partThree();
+
+        System.out.println("---- Part Four A ----");
+        assignment.partFourA();
+
+        System.out.println("---- Part Four B ----");
+        assignment.partFourB();
+
+        System.out.println("---- Part Five ----");
+        assignment.partFive();
+
+        System.out.println("---- Part Six ----");
+        assignment.partSix();
+
+        System.out.println("---- Part Seven ----");
+        assignment.partSeven();
+    }
 
     public void partThree() {
         // 创建 Employee 对象作为 Ride 的操作员
-        Employee operator = new Employee("John", 35, "Male", "E002", "Ride Operator");
+        Employee operator1 = new Employee("John", 35, "Male", "E002", "Ride Operator");
 
         // 创建 Ride 对象
-        Ride ferrisWheel = new Ride("Ferris Wheel", "Journey to the West", operator);
+        Ride ferrisWheel = new Ride("Ferris Wheel", "Journey to the West", operator1);
 
         // 创建 Visitor 对象
         Visitor visitor1 = new Visitor("Alice", 30, "Female", "T101", 2);
@@ -34,13 +56,38 @@ public class AssignmentTwo {
         ferrisWheel.printQueue();
     }
 
-    // 主方法用于测试 partThree 方法
-    public static void main(String[] args) {
-        AssignmentTwo assignment = new AssignmentTwo();
-        assignment.partThree();
-    }
-
     public void partFourA() {
+        // 创建 Ride 对象
+        Employee operator2 = new Employee("John", 35, "Male", "E002", "Ride Operator");
+        Ride ride = new Ride("Roller Coaster", "Transformers", operator2);
+
+        // 创建 Visitor 对象
+        Visitor v1 = new Visitor("Alice", 30, "Female", "T101", 2);
+        Visitor v2 = new Visitor("Bob", 25, "Male", "T102", 1);
+        Visitor v3 = new Visitor("Charlie", 20, "Male", "T103", 3);
+        Visitor v4 = new Visitor("Diana", 28, "Female", "T104", 2);
+        Visitor v5 = new Visitor("Eve", 22, "Female", "T105", 1);
+
+        // 向队列中添加访客
+        ride.addVisitorToQueue(v1);
+        ride.addVisitorToQueue(v2);
+        ride.addVisitorToQueue(v3);
+        ride.addVisitorToQueue(v4);
+        ride.addVisitorToQueue(v5);
+
+        // 从队列中移除访客并加入历史记录
+        ride.removeVisitorFromQueue();
+        ride.removeVisitorFromQueue();
+
+        // 检查访客是否在骑行历史中
+        ride.checkVisitorFromHistory(v1);
+        ride.checkVisitorFromHistory(v3);
+
+        // 打印骑行历史中的访客数量
+        System.out.println("The historical number of visitors for this project is: " + ride.numberOfVisitors());
+
+        // 打印骑行历史
+        ride.printRideHistory();
     }
 
     public void partFourB() {
