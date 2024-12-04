@@ -76,7 +76,9 @@ public class AssignmentTwo {
         ride.addVisitorToQueue(v5);
 
         // 从队列中移除访客并加入历史记录
+        ride.addVisitorToHistory(v1);
         ride.removeVisitorFromQueue();
+        ride.addVisitorToHistory(v2);
         ride.removeVisitorFromQueue();
 
         // 检查访客是否在骑行历史中

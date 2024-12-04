@@ -60,7 +60,7 @@ public class Ride implements RideInterface {
     public void removeVisitorFromQueue() {
         if (!visitorQueue.isEmpty()) {
             Visitor removed = visitorQueue.poll();
-            addVisitorToHistory(removed); // 确保将移除的访客添加到历史记录
+            // addVisitorToHistory(removed); 确保将移除的访客添加到历史记录
             System.out.println(removed.getName() + " removed from the queue.");
         } else {
             System.out.println("The queue is empty.");
