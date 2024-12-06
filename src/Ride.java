@@ -7,6 +7,8 @@ import java.util.Iterator;
 public class Ride implements RideInterface {
     private String rideName;
     private String theme;
+    private int maxRider;
+    private int numOfCycles = 0;
     private Employee operator;
     private Queue<Visitor> visitorQueue;
     private List<Visitor> rideHistory;
@@ -16,9 +18,10 @@ public class Ride implements RideInterface {
     }
 
     // 带参数的构造函数
-    public Ride(String rideName, String theme, Employee operator) {
+    public Ride(String rideName, String theme, int maxRider, Employee operator) {
         this.rideName = rideName;
         this.theme = theme;
+        this.maxRider = maxRider;
         this.operator = operator;
         this.visitorQueue = new LinkedList<>();
         this.rideHistory = new LinkedList<>();
@@ -39,6 +42,14 @@ public class Ride implements RideInterface {
 
     public void setTheme(String theme) {
         this.theme = theme;
+    }
+
+    public int getMaxRider() {
+        return maxRider;
+    }
+
+    public void setMaxRider(int maxRider) {
+        this.maxRider = maxRider;
     }
 
     public Employee getOperator() {
@@ -68,12 +79,40 @@ public class Ride implements RideInterface {
         }
     }
 
+    // 打印等待队列
     @Override
     public void printQueue() {
         System.out.println("Queue: ");
         for (Visitor visitor : visitorQueue) {
             System.out.println("- " + visitor.getName());
         }
+    }
+
+    // 运行一个周期
+    public void runOneCycle() {
+        // 验证是否有操作员
+        if (operator == null) {
+            System.out.println("Ride cannot run without an operator.");
+            return;
+        }
+        // 验证是否有等待访客
+        if (visitorQueue.isEmpty()) {
+            System.out.println("No visitors in the queue. Ride cannot run.");
+            return;
+        }
+
+        // 运行周期逻辑
+        int riders = Math.min(maxRider, visitorQueue.size());
+        System.out.printf("Running one cycle with %d riders.%n", riders);
+
+        for (int i = 0; i < riders; i++) {
+            Visitor visitor = visitorQueue.poll(); // 从队列移除
+            rideHistory.add(visitor); // 添加到历史记录
+        }
+
+        // 增加周期计数
+        numOfCycles++;
+        System.out.printf("Cycle %d completed. %d visitors were added to the ride history.%n", numOfCycles, riders);
     }
 
     @Override

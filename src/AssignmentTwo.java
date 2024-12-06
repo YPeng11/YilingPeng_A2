@@ -27,7 +27,7 @@ public class AssignmentTwo {
         Employee operator1 = new Employee("John", 35, "Male", "E002", "Ride Operator");
 
         // 创建 Ride 对象
-        Ride ferrisWheel = new Ride("Ferris Wheel", "Journey to the West", operator1);
+        Ride ferrisWheel = new Ride("Ferris Wheel", "Journey to the West", 4, operator1);
 
         // 创建 Visitor 对象
         Visitor visitor1 = new Visitor("Alice", 30, "Female", "T101", 2);
@@ -59,7 +59,7 @@ public class AssignmentTwo {
     public void partFourA() {
         // 创建 Ride 对象
         Employee operator2 = new Employee("John", 35, "Male", "E002", "Ride Operator");
-        Ride ride = new Ride("Roller Coaster", "Transformers", operator2);
+        Ride ride = new Ride("Roller Coaster", "Transformers", 3, operator2);
 
         // 创建 Visitor 对象
         Visitor v1 = new Visitor("Alice", 30, "Female", "T101", 2);
@@ -95,7 +95,7 @@ public class AssignmentTwo {
     public void partFourB() {
         // 创建一个新的 Ride 对象
         Employee operator3 = new Employee("Ella", 35, "ella@example.com", "Operator", "Morning");
-        Ride swingRide1 = new Ride("Swing Ride", "Batman", operator3);
+        Ride swingRide1 = new Ride("Swing Ride", "Batman", 1, operator3);
         // 创建 Visitor 对象
         Visitor v1 = new Visitor("Alice", 30, "Female", "T101", 2);
         Visitor v2 = new Visitor("Bob", 25, "Male", "T102", 1);
@@ -122,7 +122,36 @@ public class AssignmentTwo {
     }
 
     public void partFive() {
-        System.err.println("NULL");
+        // 创建新的 Ride 对象
+        Employee operator4 = new Employee("John", 32, "john@example.com", "Operator", "Morning");
+        Ride ferrisWheel = new Ride("Ferris Wheel", "Yellow Man", 4, operator4);
+
+        // 添加至少 10 名访客到队列
+        ferrisWheel.addVisitorToQueue(new Visitor("Alice", 30, "Female", "T101", 2));
+        ferrisWheel.addVisitorToQueue(new Visitor("Bob", 25, "Male", "T102", 1));
+        ferrisWheel.addVisitorToQueue(new Visitor("Charlie", 20, "Male", "T103", 3));
+        ferrisWheel.addVisitorToQueue(new Visitor("Diana", 28, "Female", "T104", 2));
+        ferrisWheel.addVisitorToQueue(new Visitor("Diana", 28, "Female", "T104", 2));
+        ferrisWheel.addVisitorToQueue(new Visitor("Eve", 22, "Female", "T105", 1));
+        ferrisWheel.addVisitorToQueue(new Visitor("Grace", 26, "T106", "Regular", 3));
+        ferrisWheel.addVisitorToQueue(new Visitor("Ivy", 22, "Man", "T107", 2));
+        ferrisWheel.addVisitorToQueue(new Visitor("Jack", 29, "Female", "T108", 1));
+        ferrisWheel.addVisitorToQueue(new Visitor("Kate", 27, "Female", "T109", 2));
+        ferrisWheel.addVisitorToQueue(new Visitor("Lily", 23, "Female", "T110", 3));
+        // 打印等待队列
+        System.out.println("Queue before running the cycle:");
+        ferrisWheel.printQueue();
+
+        // 运行一个周期
+        ferrisWheel.runOneCycle();
+
+        // 打印运行后的队列
+        System.out.println("Queue after running the cycle:");
+        ferrisWheel.printQueue();
+
+        // 打印骑行历史记录
+        System.out.println("Ride history:");
+        ferrisWheel.printRideHistory();
     }
 
     public void partSix() {
