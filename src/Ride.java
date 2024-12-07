@@ -1,6 +1,9 @@
 import java.util.LinkedList;
 import java.util.Queue;//添加以便 Ride 可以存储等待乘坐 Ride 的 Visitors（即 Visitor）对象
 import java.util.List;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
 
@@ -15,6 +18,8 @@ public class Ride implements RideInterface {
 
     // 默认构造函数
     public Ride() {
+        this.visitorQueue = new LinkedList<>();
+        this.rideHistory = new LinkedList<>();
     }
 
     // 带参数的构造函数
@@ -152,5 +157,18 @@ public class Ride implements RideInterface {
         // 使用 VisitorComparator 对 rideHistory 进行排序
         Collections.sort(rideHistory, new VisitorComparator());
         System.out.println("Ride history has been sorted.");
+    }
+
+    // 导出历史记录
+    public void exportRideHistory(String filename) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            for (Visitor visitor : rideHistory) {
+                writer.write(visitor.getName());
+                writer.newLine();
+            }
+            System.out.println("Ride history successfully exported to " + filename);
+        } catch (IOException e) {
+            System.out.println("Error exporting ride history: " + e.getMessage());
+        }
     }
 }

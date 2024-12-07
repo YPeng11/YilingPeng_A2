@@ -1,10 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class AssignmentTwo {
     public static void main(String[] args) {
         AssignmentTwo assignment = new AssignmentTwo();
@@ -161,48 +154,27 @@ public class AssignmentTwo {
         ferrisWheel.printRideHistory();
     }
 
-    public void exportVisitorsToCSV(List<Visitor> visitors, String filePath) {
-        try (FileWriter writer = new FileWriter(filePath)) {
-            for (Visitor visitor : visitors) {
-                writer.append(visitor.getName())
-                        .append(",")
-                        .append(String.valueOf(visitor.getAge()))
-                        .append(",")
-                        .append(visitor.getGender())
-                        .append(",")
-                        .append(visitor.getvisitorID())
-                        .append(",")
-                        .append(String.valueOf(visitor.getmembershipStatus()))
-                        .append("\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    public static void partSix() {
+        // 创建新的 Ride 对象
+        Employee operator5 = new Employee("John", 32, "Man", "Operator", "Morning");
+        Ride ride2 = new Ride("大摆锤", "侏罗纪公园", 5, operator5);
 
-    public List<Visitor> importVisitorsFromCSV(String filePath) {
-        List<Visitor> visitors = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");
-                if (values.length == 5) {
-                    Visitor visitor = new Visitor(
-                            values[0],
-                            Integer.parseInt(values[1]),
-                            values[2],
-                            values[3],
-                            Integer.parseInt(values[4]));
-                    visitors.add(visitor);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return visitors;
-    }
+        // 添加至少 5 个访客到已完成游玩的集合
+        ride2.addVisitorToHistory(new Visitor("Alice", 30, "Female", "T101", 2));
+        ride2.addVisitorToHistory(new Visitor("Bob", 25, "Male", "T102", 1));
+        ride2.addVisitorToHistory(new Visitor("Charlie", 20, "Male", "T103", 3));
+        ride2.addVisitorToHistory(new Visitor("Diana", 28, "Female", "T104", 2));
+        ride2.addVisitorToHistory(new Visitor("Eve", 22, "Female", "T105", 1));
+        ride2.addVisitorToHistory(new Visitor("Grace", 26, "T106", "Regular", 3));
+        ride2.addVisitorToHistory(new Visitor("Ivy", 22, "Man", "T107", 2));
 
-    public void partSix() {
+        // 打印已完成游玩的访客
+        System.out.println("已完成游玩的访客：");
+        ride2.printRideHistory();
+
+        // 将访客历史导出到文件
+        String filename = "ride_history.txt";
+        ride2.exportRideHistory(filename);
     }
 
     public void partSeven() {
