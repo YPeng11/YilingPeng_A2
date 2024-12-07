@@ -1,3 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class AssignmentTwo {
     public static void main(String[] args) {
         AssignmentTwo assignment = new AssignmentTwo();
@@ -152,6 +159,47 @@ public class AssignmentTwo {
         // 打印骑行历史记录
         System.out.println("Ride history:");
         ferrisWheel.printRideHistory();
+    }
+
+    public void exportVisitorsToCSV(List<Visitor> visitors, String filePath) {
+        try (FileWriter writer = new FileWriter(filePath)) {
+            for (Visitor visitor : visitors) {
+                writer.append(visitor.getName())
+                        .append(",")
+                        .append(String.valueOf(visitor.getAge()))
+                        .append(",")
+                        .append(visitor.getGender())
+                        .append(",")
+                        .append(visitor.getvisitorID())
+                        .append(",")
+                        .append(String.valueOf(visitor.getmembershipStatus()))
+                        .append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Visitor> importVisitorsFromCSV(String filePath) {
+        List<Visitor> visitors = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                if (values.length == 5) {
+                    Visitor visitor = new Visitor(
+                            values[0],
+                            Integer.parseInt(values[1]),
+                            values[2],
+                            values[3],
+                            Integer.parseInt(values[4]));
+                    visitors.add(visitor);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return visitors;
     }
 
     public void partSix() {
