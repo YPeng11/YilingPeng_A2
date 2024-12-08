@@ -1,7 +1,9 @@
 import java.util.LinkedList;
 import java.util.Queue;//添加以便 Ride 可以存储等待乘坐 Ride 的 Visitors（即 Visitor）对象
 import java.util.List;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;
@@ -169,6 +171,41 @@ public class Ride implements RideInterface {
             System.out.println("Ride history successfully exported to " + filename);
         } catch (IOException e) {
             System.out.println("Error exporting ride history: " + e.getMessage());
+        }
+    }
+
+    /**
+     * 从文件导入访客历史记录
+     * 
+     * @param filename 文件名
+     */
+    public void importRideHistory(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // 假设每行格式为：name,age,gender,ticketId,ticketType
+                String[] parts = line.split(",");
+                if (parts.length != 5) {
+                    System.out.println("无效数据格式，跳过：" + line);
+                    continue;
+                }
+                try {
+                    String name = parts[0];
+                    int age = Integer.parseInt(parts[1]);
+                    String gender = parts[2];
+                    String ticketId = parts[3];
+                    int ticketType = Integer.parseInt(parts[4]);
+
+                    // 创建 Visitor 对象并添加到历史记录
+                    Visitor visitor = new Visitor(name, age, gender, ticketId, ticketType);
+                    addVisitorToHistory(visitor);
+                } catch (NumberFormatException e) {
+                    System.out.println("无效数据，跳过：" + line);
+                }
+            }
+            System.out.println("访客历史记录导入完成！");
+        } catch (IOException e) {
+            System.out.println("读取文件时出错：" + e.getMessage());
         }
     }
 }

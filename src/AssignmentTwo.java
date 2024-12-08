@@ -154,7 +154,7 @@ public class AssignmentTwo {
         ferrisWheel.printRideHistory();
     }
 
-    public static void partSix() {
+    public void partSix() {
         // 创建新的 Ride 对象
         Employee operator5 = new Employee("John", 32, "Man", "Operator", "Morning");
         Ride ride2 = new Ride("大摆锤", "侏罗纪公园", 5, operator5);
@@ -178,5 +178,20 @@ public class AssignmentTwo {
     }
 
     public void partSeven() {
+        // 创建新的 Ride 对象
+        Employee operator6 = new Employee("Jane", 29, "Female", "Operator", "Afternoon");
+        Ride ride3 = new Ride("海盗船", "加勒比海盗", 6, operator6);
+
+        // 导入上一部分导出的文件
+        String filename = "ride_history.txt";
+        ride3.importRideHistory(filename);
+
+        // 打印 LinkedList 中的访客数量
+        System.out.printf("导入的访客数量：%d%n", ride3.numberOfVisitors());
+
+        // 打印 LinkedList 中的所有访客
+        System.out.println("导入的访客详细信息：");
+        ride3.printRideHistory();
     }
+
 }
