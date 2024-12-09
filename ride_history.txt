@@ -1,7 +1,7 @@
-Alice
-Bob
-Charlie
-Diana
-Eve
-Grace
-Ivy
+Alice,30,Female,T101,2
+Bob,25,Male,T102,1
+Charlie,20,Male,T103,3
+Diana,28,Female,T104,2
+Eve,22,Female,T105,1
+Grace,26,T106,Regular,3
+Ivy,22,Man,T107,2

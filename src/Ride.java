@@ -164,8 +164,11 @@ public class Ride implements RideInterface {
     // 导出历史记录
     public void exportRideHistory(String filename) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            // 写入每个访客的详细信息，包括 name, age, gender 等
             for (Visitor visitor : rideHistory) {
-                writer.write(visitor.getName());
+                String visitorData = visitor.getName() + "," + visitor.getAge() + "," + visitor.getGender() + ","
+                        + visitor.getvisitorID() + "," + visitor.getmembershipStatus();
+                writer.write(visitorData);
                 writer.newLine();
             }
             System.out.println("Ride history successfully exported to " + filename);
@@ -183,7 +186,7 @@ public class Ride implements RideInterface {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // 假设每行格式为：name,age,gender,ticketId,ticketType
+                // 假设每行格式为：name,age,gender,visitorID, membershipStatus
                 String[] parts = line.split(",");
                 if (parts.length != 5) {
                     System.out.println("无效数据格式，跳过：" + line);
@@ -193,11 +196,11 @@ public class Ride implements RideInterface {
                     String name = parts[0];
                     int age = Integer.parseInt(parts[1]);
                     String gender = parts[2];
-                    String ticketId = parts[3];
-                    int ticketType = Integer.parseInt(parts[4]);
+                    String visitorID = parts[3];
+                    int membershipStatus = Integer.parseInt(parts[4]);
 
                     // 创建 Visitor 对象并添加到历史记录
-                    Visitor visitor = new Visitor(name, age, gender, ticketId, ticketType);
+                    Visitor visitor = new Visitor(name, age, gender, visitorID, membershipStatus);
                     addVisitorToHistory(visitor);
                 } catch (NumberFormatException e) {
                     System.out.println("无效数据，跳过：" + line);
