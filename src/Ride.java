@@ -166,14 +166,18 @@ public class Ride implements RideInterface {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             // 写入每个访客的详细信息，包括 name, age, gender 等
             for (Visitor visitor : rideHistory) {
-                String visitorData = visitor.getName() + "," + visitor.getAge() + "," + visitor.getGender() + ","
-                        + visitor.getvisitorID() + "," + visitor.getmembershipStatus();
-                writer.write(visitorData);
+                StringBuilder visitorData = new StringBuilder();
+                visitorData.append(visitor.getName()).append(",")
+                        .append(visitor.getAge()).append(",")
+                        .append(visitor.getGender()).append(",")
+                        .append(visitor.getvisitorID()).append(",")
+                        .append(visitor.getmembershipStatus());
+                writer.write(visitorData.toString());
                 writer.newLine();
             }
             System.out.println("Ride history successfully exported to " + filename);
         } catch (IOException e) {
-            System.out.println("Error exporting ride history: " + e.getMessage());
+            System.out.println("Error exporting: " + e.getMessage());
         }
     }
 
@@ -183,9 +187,16 @@ public class Ride implements RideInterface {
      * @param filename 文件名
      */
     public void importRideHistory(String filename) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+        BufferedReader reader = null; // 用于读取文件，初始化变量
+        try {
+            // 创建一个包装了FileReader的对象，用于读取指定文件名的文件
+            reader = new BufferedReader(new FileReader(filename));
             String line;
-            while ((line = reader.readLine()) != null) {
+            do {
+                line = reader.readLine();
+                if (line == null) {
+                    break; // 如果没有更多行，退出循环
+                }
                 // 假设每行格式为：name,age,gender,visitorID, membershipStatus
                 String[] parts = line.split(",");
                 if (parts.length != 5) {
@@ -205,10 +216,18 @@ public class Ride implements RideInterface {
                 } catch (NumberFormatException e) {
                     System.out.println("无效数据，跳过：" + line);
                 }
-            }
+            } while (true); // 使用 do-while 循环读取文件
             System.out.println("访客历史记录导入完成！");
         } catch (IOException e) {
             System.out.println("读取文件时出错：" + e.getMessage());
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    System.out.println("关闭文件时出错：" + e.getMessage());
+                }
+            }
         }
     }
 }
