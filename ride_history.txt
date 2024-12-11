@@ -1,7 +1,10 @@
-Alice,30,Female,T101,2
-Bob,25,Male,T102,1
-Charlie,20,Male,T103,3
-Diana,28,Female,T104,2
-Eve,22,Female,T105,1
-Grace,26,T106,Regular,3
-Ivy,22,Man,T107,2
+Aura,19,Female,001,2
+Booz,52,Male,002,1
+Chsids,34,Male,003,3
+Dave,28,Female,004,2
+Elsopyia,42,Female,005,1
+Frank,27,Male,006,4
+Good,9,Female,007,1
+Hire,35,Male,008,3
+Iric,67,Male,009,5
+Jean,29,Female,010,2

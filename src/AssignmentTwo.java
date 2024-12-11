@@ -24,42 +24,41 @@ public class AssignmentTwo {
 
     public void partThree() {
         // 创建 Employee 对象作为 Ride 的操作员
-        Employee operator1 = new Employee("John", 35, "Male", "E002", "Ride Operator");
+        Employee operator1 = new Employee("王小一", 35, "Male", "E002", "Ride Operator");
 
         // 创建 Ride 对象
-        Ride ferrisWheel = new Ride("Ferris Wheel", "Journey to the West", 4, operator1);
+        Ride ride1 = new Ride("摩天轮", "西游记", 4, operator1);
 
         // 创建 Visitor 对象
-        Visitor visitor1 = new Visitor("Alice", 30, "Female", "T101", 2);
-        Visitor visitor2 = new Visitor("Bob", 25, "Male", "T102", 1);
-        Visitor visitor3 = new Visitor("Charlie", 20, "Male", "T103", 3);
-        Visitor visitor4 = new Visitor("Diana", 28, "Female", "T104", 2);
-        Visitor visitor5 = new Visitor("Eve", 22, "Female", "T105", 1);
+        Visitor visitor1 = new Visitor("Aura", 19, "Female", "001", 2);
+        Visitor visitor2 = new Visitor("Booz", 52, "Male", "002", 1);
+        Visitor visitor3 = new Visitor("Chsids", 34, "Male", "003", 3);
+        Visitor visitor4 = new Visitor("Dave", 28, "Female", "004", 2);
+        Visitor visitor5 = new Visitor("Elsopyia", 42, "Female", "005", 1);
 
         // 将访客添加到队列
-        ferrisWheel.addVisitorToQueue(visitor1);
-        ferrisWheel.addVisitorToQueue(visitor2);
-        ferrisWheel.addVisitorToQueue(visitor3);
-        ferrisWheel.addVisitorToQueue(visitor4);
-        ferrisWheel.addVisitorToQueue(visitor5);
+        Visitor[] visitors = { visitor1, visitor2, visitor3, visitor4, visitor5 };
+        for (Visitor visitor : visitors) {
+            ride1.addVisitorToQueue(visitor);
+        }
 
         // 打印队列中的访客
-        System.out.println("Current Queue:");
-        ferrisWheel.printQueue();
+        System.out.println("正在等待的游客:");
+        ride1.printQueue();
 
         // 从队列中移除一个访客
-        System.out.println("\nRemoving one visitor from the queue...");
-        ferrisWheel.removeVisitorFromQueue();
+        System.out.println("\n已完成等待:");
+        ride1.removeVisitorFromQueue();
 
         // 再次打印队列中的访客
-        System.out.println("\nUpdated Queue:");
-        ferrisWheel.printQueue();
+        System.out.println("\n当前所剩游客队列:");
+        ride1.printQueue();
     }
 
     public void partFourA() {
         // 创建 Ride 对象
         Employee operator2 = new Employee("John", 35, "Male", "E002", "Ride Operator");
-        Ride ride = new Ride("Roller Coaster", "Transformers", 3, operator2);
+        Ride ride2 = new Ride("Roller Coaster", "Transformers", 3, operator2);
 
         // 创建 Visitor 对象
         Visitor v1 = new Visitor("Alice", 30, "Female", "T101", 2);
@@ -69,33 +68,33 @@ public class AssignmentTwo {
         Visitor v5 = new Visitor("Eve", 22, "Female", "T105", 1);
 
         // 向队列中添加访客
-        ride.addVisitorToQueue(v1);
-        ride.addVisitorToQueue(v2);
-        ride.addVisitorToQueue(v3);
-        ride.addVisitorToQueue(v4);
-        ride.addVisitorToQueue(v5);
+        Visitor[] visitors = { v1, v2, v3, v4, v5 };
+        for (Visitor visitor : visitors) {
+            ride2.addVisitorToQueue(visitor);
+        }
 
         // 从队列中移除访客并加入历史记录
-        ride.addVisitorToHistory(v1);
-        ride.removeVisitorFromQueue();
-        ride.addVisitorToHistory(v2);
-        ride.removeVisitorFromQueue();
+        ride2.addVisitorToHistory(v1);
+        ride2.removeVisitorFromQueue();
+        ride2.addVisitorToHistory(v2);
+        ride2.removeVisitorFromQueue();
 
         // 检查访客是否在骑行历史中
-        ride.checkVisitorFromHistory(v1);
-        ride.checkVisitorFromHistory(v3);
+        ride2.checkVisitorFromHistory(v1);
+        ride2.checkVisitorFromHistory(v3);
 
         // 打印骑行历史中的访客数量
-        System.out.println("The historical number of visitors for this project is: " + ride.numberOfVisitors());
+        System.out.println("历史中游客的数量为: " + ride2.numberOfVisitors());
 
         // 打印骑行历史
-        ride.printRideHistory();
+        System.out.println("\n当前历史记录:");
+        ride2.printRideHistory();
     }
 
     public void partFourB() {
         // 创建一个新的 Ride 对象
         Employee operator3 = new Employee("Ella", 35, "ella@example.com", "Operator", "Morning");
-        Ride swingRide1 = new Ride("Swing Ride", "Batman", 1, operator3);
+        Ride Ride3 = new Ride("Swing Ride", "Batman", 1, operator3);
         // 创建 Visitor 对象
         Visitor v1 = new Visitor("Alice", 30, "Female", "T101", 2);
         Visitor v2 = new Visitor("Bob", 25, "Male", "T102", 1);
@@ -103,95 +102,105 @@ public class AssignmentTwo {
         Visitor v4 = new Visitor("Diana", 28, "Female", "T104", 2);
         Visitor v5 = new Visitor("Eve", 22, "Female", "T105", 1);
         // 添加至少 5 名访客到 rideHistory
-        swingRide1.addVisitorToHistory(v5);
-        swingRide1.addVisitorToHistory(v4);
-        swingRide1.addVisitorToHistory(v3);
-        swingRide1.addVisitorToHistory(v2);
-        swingRide1.addVisitorToHistory(v1);
+        Visitor[] visitors = { v5, v4, v3, v2, v1 };
+        for (Visitor visitor : visitors) {
+            Ride3.addVisitorToHistory(visitor);
+        }
 
         // 打印未排序的访客历史记录
-        System.out.println("Before sorting:");
-        swingRide1.printRideHistory();
+        System.out.println("未排序前的队列:");
+        Ride3.printRideHistory();
 
         // 对 rideHistory 进行排序
-        swingRide1.sortRideHistory();
+        Ride3.sortRideHistory();
 
         // 打印排序后的访客历史记录
-        System.out.println("After sorting:");
-        swingRide1.printRideHistory();
+        System.out.println("已排序队列:");
+        Ride3.printRideHistory();
     }
 
     public void partFive() {
         // 创建新的 Ride 对象
         Employee operator4 = new Employee("John", 32, "john@example.com", "Operator", "Morning");
-        Ride ferrisWheel = new Ride("Ferris Wheel", "Yellow Man", 4, operator4);
+        Ride ride4 = new Ride("Ferris Wheel", "Yellow Man", 4, operator4);
 
+        // 创建 Visitor 对象
+        Visitor v1 = new Visitor("Aura", 19, "Female", "001", 2);
+        Visitor v2 = new Visitor("Booz", 52, "Male", "002", 1);
+        Visitor v3 = new Visitor("Chsids", 34, "Male", "003", 3);
+        Visitor v4 = new Visitor("Dave", 28, "Female", "004", 2);
+        Visitor v5 = new Visitor("Elsopyia", 42, "Female", "005", 1);
+        Visitor v6 = new Visitor("Frank", 27, "Male", "006", 4);
+        Visitor v7 = new Visitor("Good", 9, "Female", "007", 1);
+        Visitor v8 = new Visitor("Hire", 35, "Male", "008", 3);
+        Visitor v9 = new Visitor("Iric", 67, "Male", "009", 5);
+        Visitor v10 = new Visitor("Jean", 29, "Female", "010", 2);
         // 添加至少 10 名访客到队列
-        ferrisWheel.addVisitorToQueue(new Visitor("Alice", 30, "Female", "T101", 2));
-        ferrisWheel.addVisitorToQueue(new Visitor("Bob", 25, "Male", "T102", 1));
-        ferrisWheel.addVisitorToQueue(new Visitor("Charlie", 20, "Male", "T103", 3));
-        ferrisWheel.addVisitorToQueue(new Visitor("Diana", 28, "Female", "T104", 2));
-        ferrisWheel.addVisitorToQueue(new Visitor("Diana", 28, "Female", "T104", 2));
-        ferrisWheel.addVisitorToQueue(new Visitor("Eve", 22, "Female", "T105", 1));
-        ferrisWheel.addVisitorToQueue(new Visitor("Grace", 26, "T106", "Regular", 3));
-        ferrisWheel.addVisitorToQueue(new Visitor("Ivy", 22, "Man", "T107", 2));
-        ferrisWheel.addVisitorToQueue(new Visitor("Jack", 29, "Female", "T108", 1));
-        ferrisWheel.addVisitorToQueue(new Visitor("Kate", 27, "Female", "T109", 2));
-        ferrisWheel.addVisitorToQueue(new Visitor("Lily", 23, "Female", "T110", 3));
+        Visitor[] visitors = { v1, v2, v3, v4, v5, v6, v7, v8, v9, v10 };
+        for (Visitor visitor : visitors) {
+            ride4.addVisitorToQueue(visitor);
+        }
         // 打印等待队列
-        System.out.println("Queue before running the cycle:");
-        ferrisWheel.printQueue();
+        System.out.println("开始前的队伍为:");
+        ride4.printQueue();
 
         // 运行一个周期
-        ferrisWheel.runOneCycle();
+        ride4.runOneCycle();
 
         // 打印运行后的队列
-        System.out.println("Queue after running the cycle:");
-        ferrisWheel.printQueue();
+        System.out.println("一个项目周期的周期为" + ride4.getMaxRider() + ",\n运行一次后的队列为:");
+        ride4.printQueue();
 
         // 打印骑行历史记录
-        System.out.println("Ride history:");
-        ferrisWheel.printRideHistory();
+        System.out.println("此时历史记录为:");
+        ride4.printRideHistory();
     }
 
     public void partSix() {
         // 创建新的 Ride 对象
         Employee operator5 = new Employee("John", 32, "Man", "Operator", "Morning");
-        Ride ride2 = new Ride("大摆锤", "侏罗纪公园", 5, operator5);
+        Ride ride5 = new Ride("大摆锤", "侏罗纪公园", 5, operator5);
+        // 创建 Visitor 对象
+        Visitor v1 = new Visitor("Aura", 19, "Female", "001", 2);
+        Visitor v2 = new Visitor("Booz", 52, "Male", "002", 1);
+        Visitor v3 = new Visitor("Chsids", 34, "Male", "003", 3);
+        Visitor v4 = new Visitor("Dave", 28, "Female", "004", 2);
+        Visitor v5 = new Visitor("Elsopyia", 42, "Female", "005", 1);
+        Visitor v6 = new Visitor("Frank", 27, "Male", "006", 4);
+        Visitor v7 = new Visitor("Good", 9, "Female", "007", 1);
+        Visitor v8 = new Visitor("Hire", 35, "Male", "008", 3);
+        Visitor v9 = new Visitor("Iric", 67, "Male", "009", 5);
+        Visitor v10 = new Visitor("Jean", 29, "Female", "010", 2);
 
-        // 添加至少 5 个访客到已完成游玩的集合
-        ride2.addVisitorToHistory(new Visitor("Alice", 30, "Female", "T101", 2));
-        ride2.addVisitorToHistory(new Visitor("Bob", 25, "Male", "T102", 1));
-        ride2.addVisitorToHistory(new Visitor("Charlie", 20, "Male", "T103", 3));
-        ride2.addVisitorToHistory(new Visitor("Diana", 28, "Female", "T104", 2));
-        ride2.addVisitorToHistory(new Visitor("Eve", 22, "Female", "T105", 1));
-        ride2.addVisitorToHistory(new Visitor("Grace", 26, "T106", "Regular", 3));
-        ride2.addVisitorToHistory(new Visitor("Ivy", 22, "Man", "T107", 2));
-
+        // 添加至少 10 名访客到队列
+        Visitor[] visitors = { v1, v2, v3, v4, v5, v6, v7, v8, v9, v10 };
+        for (Visitor visitor : visitors) {
+            ride5.addVisitorToHistory(visitor);
+        }
         // 打印已完成游玩的访客
         System.out.println("已完成游玩的访客：");
-        ride2.printRideHistory();
+        ride5.printRideHistory();
 
         // 将访客历史导出到文件
         String filename = "ride_history.txt";
-        ride2.exportRideHistory(filename);
+        ride5.exportRideHistory(filename);
     }
 
     public void partSeven() {
         // 创建新的 Ride 对象
         Employee operator6 = new Employee("Jane", 29, "Female", "Operator", "Afternoon");
-        Ride ride3 = new Ride("海盗船", "加勒比海盗", 6, operator6);
+        Ride ride6 = new Ride("海盗船", "加勒比海盗", 6, operator6);
 
         // 导入上一部分导出的文件
         String filename = "ride_history.txt";
-        ride3.importRideHistory(filename);
+        ride6.importRideHistory(filename);
 
         // 打印 LinkedList 中的访客数量
-        System.out.printf("导入的访客数量：%d%n", ride3.numberOfVisitors());
+        System.out.printf("导入的访客数量：%d%n", ride6.numberOfVisitors());
 
         // 打印 LinkedList 中的所有访客
         System.out.println("导入的访客详细信息：");
-        ride3.printRideHistory();
+        ride6.printRideHistory();
     }
 
 }
