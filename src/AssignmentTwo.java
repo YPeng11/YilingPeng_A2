@@ -1,4 +1,16 @@
 public class AssignmentTwo {
+    // 创建 Visitor 对象
+    private Visitor v1 = new Visitor("Aura", 19, "Female", "001", 2);
+    private Visitor v2 = new Visitor("Booz", 52, "Male", "002", 1);
+    private Visitor v3 = new Visitor("Chsids", 34, "Male", "003", 3);
+    private Visitor v4 = new Visitor("Dave", 28, "Female", "004", 2);
+    private Visitor v5 = new Visitor("Elsopyia", 42, "Female", "005", 1);
+    private Visitor v6 = new Visitor("Frank", 27, "Male", "006", 4);
+    private Visitor v7 = new Visitor("Good", 9, "Female", "007", 1);
+    private Visitor v8 = new Visitor("Hire", 35, "Male", "008", 3);
+    private Visitor v9 = new Visitor("Iric", 67, "Male", "009", 5);
+    private Visitor v10 = new Visitor("Jean", 29, "Female", "010", 2);
+
     public static void main(String[] args) {
         AssignmentTwo assignment = new AssignmentTwo();
 
@@ -29,15 +41,8 @@ public class AssignmentTwo {
         // 创建 Ride 对象
         Ride ride1 = new Ride("摩天轮", "西游记", 4, operator1);
 
-        // 创建 Visitor 对象
-        Visitor visitor1 = new Visitor("Aura", 19, "Female", "001", 2);
-        Visitor visitor2 = new Visitor("Booz", 52, "Male", "002", 1);
-        Visitor visitor3 = new Visitor("Chsids", 34, "Male", "003", 3);
-        Visitor visitor4 = new Visitor("Dave", 28, "Female", "004", 2);
-        Visitor visitor5 = new Visitor("Elsopyia", 42, "Female", "005", 1);
-
         // 将访客添加到队列
-        Visitor[] visitors = { visitor1, visitor2, visitor3, visitor4, visitor5 };
+        Visitor[] visitors = { v1, v2, v3, v4, v5 };
         for (Visitor visitor : visitors) {
             ride1.addVisitorToQueue(visitor);
         }
@@ -59,13 +64,6 @@ public class AssignmentTwo {
         // 创建 Ride 对象
         Employee operator2 = new Employee("John", 35, "Male", "E002", "Ride Operator");
         Ride ride2 = new Ride("Roller Coaster", "Transformers", 3, operator2);
-
-        // 创建 Visitor 对象
-        Visitor v1 = new Visitor("Alice", 30, "Female", "T101", 2);
-        Visitor v2 = new Visitor("Bob", 25, "Male", "T102", 1);
-        Visitor v3 = new Visitor("Charlie", 20, "Male", "T103", 3);
-        Visitor v4 = new Visitor("Diana", 28, "Female", "T104", 2);
-        Visitor v5 = new Visitor("Eve", 22, "Female", "T105", 1);
 
         // 向队列中添加访客
         Visitor[] visitors = { v1, v2, v3, v4, v5 };
@@ -95,13 +93,7 @@ public class AssignmentTwo {
         // 创建一个新的 Ride 对象
         Employee operator3 = new Employee("Ella", 35, "ella@example.com", "Operator", "Morning");
         Ride Ride3 = new Ride("Swing Ride", "Batman", 1, operator3);
-        // 创建 Visitor 对象
-        Visitor v1 = new Visitor("Alice", 30, "Female", "T101", 2);
-        Visitor v2 = new Visitor("Bob", 25, "Male", "T102", 1);
-        Visitor v3 = new Visitor("Charlie", 20, "Male", "T103", 3);
-        Visitor v4 = new Visitor("Diana", 28, "Female", "T104", 2);
-        Visitor v5 = new Visitor("Eve", 22, "Female", "T105", 1);
-        // 添加至少 5 名访客到 rideHistory
+
         Visitor[] visitors = { v5, v4, v3, v2, v1 };
         for (Visitor visitor : visitors) {
             Ride3.addVisitorToHistory(visitor);
@@ -124,17 +116,6 @@ public class AssignmentTwo {
         Employee operator4 = new Employee("John", 32, "john@example.com", "Operator", "Morning");
         Ride ride4 = new Ride("Ferris Wheel", "Yellow Man", 4, operator4);
 
-        // 创建 Visitor 对象
-        Visitor v1 = new Visitor("Aura", 19, "Female", "001", 2);
-        Visitor v2 = new Visitor("Booz", 52, "Male", "002", 1);
-        Visitor v3 = new Visitor("Chsids", 34, "Male", "003", 3);
-        Visitor v4 = new Visitor("Dave", 28, "Female", "004", 2);
-        Visitor v5 = new Visitor("Elsopyia", 42, "Female", "005", 1);
-        Visitor v6 = new Visitor("Frank", 27, "Male", "006", 4);
-        Visitor v7 = new Visitor("Good", 9, "Female", "007", 1);
-        Visitor v8 = new Visitor("Hire", 35, "Male", "008", 3);
-        Visitor v9 = new Visitor("Iric", 67, "Male", "009", 5);
-        Visitor v10 = new Visitor("Jean", 29, "Female", "010", 2);
         // 添加至少 10 名访客到队列
         Visitor[] visitors = { v1, v2, v3, v4, v5, v6, v7, v8, v9, v10 };
         for (Visitor visitor : visitors) {
@@ -160,17 +141,6 @@ public class AssignmentTwo {
         // 创建新的 Ride 对象
         Employee operator5 = new Employee("John", 32, "Man", "Operator", "Morning");
         Ride ride5 = new Ride("大摆锤", "侏罗纪公园", 5, operator5);
-        // 创建 Visitor 对象
-        Visitor v1 = new Visitor("Aura", 19, "Female", "001", 2);
-        Visitor v2 = new Visitor("Booz", 52, "Male", "002", 1);
-        Visitor v3 = new Visitor("Chsids", 34, "Male", "003", 3);
-        Visitor v4 = new Visitor("Dave", 28, "Female", "004", 2);
-        Visitor v5 = new Visitor("Elsopyia", 42, "Female", "005", 1);
-        Visitor v6 = new Visitor("Frank", 27, "Male", "006", 4);
-        Visitor v7 = new Visitor("Good", 9, "Female", "007", 1);
-        Visitor v8 = new Visitor("Hire", 35, "Male", "008", 3);
-        Visitor v9 = new Visitor("Iric", 67, "Male", "009", 5);
-        Visitor v10 = new Visitor("Jean", 29, "Female", "010", 2);
 
         // 添加至少 10 名访客到队列
         Visitor[] visitors = { v1, v2, v3, v4, v5, v6, v7, v8, v9, v10 };
