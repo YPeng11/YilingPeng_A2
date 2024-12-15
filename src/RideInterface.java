@@ -22,4 +22,13 @@ public interface RideInterface {
 
     // 打印骑行历史记录中的访客
     void printRideHistory();
+
+    // 排序骑行历史记录中的访客
+    void sortRideHistory();
+
+    // 导出骑行历史记录
+    void exportRideHistory(String filename);
+
+    // 导入骑行历史记录
+    void importRideHistory(String filename);
 }
